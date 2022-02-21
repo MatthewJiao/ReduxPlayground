@@ -3,7 +3,7 @@ import { ActionTypes } from "../constants";
 const initialState = {
   products: [{ id: 1, title: "Dipesh", category: "programmer" }],
 };
-export const productReducer = (state, action) => {
+export const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.SET_PRODUCTS:
       return state;

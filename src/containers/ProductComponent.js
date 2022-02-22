@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const ProductComponent = () => {
   const products = useSelector((state) => state.allProducts.products);
-  const renderList = products.map((product) => {
+  const renderList = products?.map((product) => {
     const { id, title, image, price, category } = product;
     return (
       <div className="four wide column" key={id}>

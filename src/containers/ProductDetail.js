@@ -13,16 +13,18 @@ const ProductDetail = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
 
-  const fetchProductDetail = async () => {
-    const response = await axios
-      .get(`https://fakestoreapi.com/products/${productId}`)
-      .catch((err) => {
-        console.log("error");
-      });
-    dispatch(selectedProduct(response.data));
-  };
+  console.log(product);
 
   useEffect(() => {
+    const fetchProductDetail = async () => {
+      const response = await axios
+        .get(`https://fakestoreapi.com/products/${productId}`)
+        .catch((err) => {
+          console.log("error");
+        });
+      dispatch(selectedProduct(response.data));
+    };
+
     if (productId && productId !== "") fetchProductDetail();
     return () => {
       dispatch(removeSelectedProduct());

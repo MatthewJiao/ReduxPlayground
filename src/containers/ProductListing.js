@@ -7,16 +7,17 @@ const ProductListing = () => {
   const products = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const fetchProducts = async () => {
-    const response = await axios
-      .get("https://fakestoreapi.com/products")
-      .catch((err) => {
-        console.log("Error");
-      });
-    dispatch(setProducts(response.data));
-  };
-
   useEffect(() => {
+    const fetchProducts = () => {
+      axios
+        .get("https://fakestoreapi.com/products")
+        .catch((err) => {
+          console.log("Error");
+        })
+        .then((response) => {
+          dispatch(setProducts(response.data));
+        });
+    };
     fetchProducts();
   }, []);
   console.log(products);
